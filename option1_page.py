@@ -49,6 +49,10 @@ class Option1Page(tk.Frame):
         label2 = ttk.Label(self, text="Frequency order: E T I A N M S U R W D K G O H V F L P J B X C Y Z Q")
         label2.pack()
 
+        self.logo_image = tk.PhotoImage(file='./assets/binary-tree.png')
+        label = ttk.Label(self, image=self.logo_image)
+        label.pack()
+
         hide_show_button = ttk.Button(self, text="Hide info", command=self.switch_callback)
         hide_show_button.pack()
 

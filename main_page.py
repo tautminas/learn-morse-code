@@ -23,17 +23,20 @@ class MainPage(tk.Frame):
         youtube_label = HyperlinkLabel(self, text=youtube_label_text, link_url=youtube_url)
         youtube_label.pack()
 
-        mode_label = ttk.Label(self, text="Select the mode of learning Morse code:")
-        mode_label.pack()
+        row_frame = ttk.Frame(self)
+        row_frame.pack()
+
+        mode_label = ttk.Label(row_frame, text="Select the mode of learning Morse code:")
+        mode_label.pack(side="left")
 
         options = ["Frequency Method", "Phrase Method"]
         self.selected_option = tk.StringVar()
-        dropdown = ttk.Combobox(self, textvariable=self.selected_option, values=options, state="readonly")
-        dropdown.pack()
+        dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
+        dropdown.pack(side="left")
         self.selected_option.set("Frequency Method")
 
-        button = ttk.Button(self, text="Let's go", command=self.handle_option_selection)
-        button.pack()
+        button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
+        button.pack(side="left")
 
     def handle_option_selection(self):
         selected_option = self.selected_option.get()
