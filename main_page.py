@@ -15,7 +15,7 @@ class MainPage(tk.Frame):
 
         intro_label = ttk.Label(self, text="Welcome to the GUI application which will help you perfectionize your morse code skills! "
                                            "The technique of learning Morse code which is used in the app is created by American memory athlete Nelson Dellis. "
-                                           "Application has different modes of learning. Please select one according to your needs and let's have some fun!", wraplength=400, justify="center")
+                                           "Application has different modes of learning. Please select one according to your needs and let's have some fun.", wraplength=400, justify="center")
         intro_label.pack()
 
         youtube_url = "https://www.youtube.com/watch?v=D8tPkb98Fkk"

@@ -11,42 +11,53 @@ class Option1Page(tk.Frame):
         button = ttk.Button(self, text="Back to Main Page", command=self.switch_callback)
         button.pack()
 
-        label = ttk.Label(self, text="Story to memorize all the alphabet in frequency order:")
-        label.pack()
+        story_label = ttk.Label(self, text="Story to memorize all the alphabet in frequency order:")
+        story_label.pack()
 
         story_text = (
-            "There is E.T. and his name happens to be Ian. He is very open-minded and suddenly he says 'Mm, sure'."
-            " He gets some WD-40 and before he does something with it he says to himself out loud 'Kay, go'."
-            " For some reason, he uses that oil to turn on some high voltage frequency. He pauses for a second,"
-            " and says to himself 'L-O-L'. It was a funny experience. Once that's all done, he puts on his PJs,"
-            " gets ready for bed, gets inside a box. The box happens to be size (CYZ) Q. Q is the size of all boxes"
-            " in this extraterrestrial planet."
+            "There is an extraterrestrial (E.T.) named IAN. He is remarkably open-minded, and "
+            "suddenly he exclaims, 'Mm, SURe.' Ian grabs a can of WD-40, and before using it, "
+            "he mutters to himself, 'Kay, GO.' For some inexplicable reason, he employs this oil "
+            "to activate a High-Voltage Frequency. Pausing for a moment, he chuckles to himself, "
+            "saying 'Lol.' It was quite a humorous experience. Once he completes his experiment, "
+            "Ian puts on his pajamas (PJs), prepares for bed, and then climbs into a BoX. "
+            "Interestingly, this box is of size (CYZ) Q, which, on this extraterrestrial planet, "
+            "happens to be the standard size for all boxes."
         )
 
-        self.text_widget = tk.Text(self, wrap=tk.WORD, width=50, height=11)
-        # self.text_widget.pack()
+        self.text_widget = tk.Text(self, wrap=tk.WORD, width=50, height=13)
         self.text_widget.insert("1.0", story_text)
         self.text_widget.config(state=tk.DISABLED)
-        # Create a tag for highlighting
         self.text_widget.tag_configure("highlight", background="yellow")
 
-        # Highlight specific characters or text
-        self.text_widget.tag_add("highlight", "1.6", "1.7")  # Example: Highlight the letter 'E'
-        self.text_widget.tag_add("highlight", "1.9", "1.11")  # Example: Highlight the word 'his'
+        def highlight_letters_in_order():
+            letters_to_highlight = "ETIANMSURWDKGOHVFLPJBXCYZQ"
+            start_index = "1.0"
+
+            for letter in letters_to_highlight:
+                start_index = self.text_widget.search(letter, start_index, stopindex="end")
+                if not start_index:
+                    break
+                end_index = self.text_widget.index(f"{start_index}+1c")
+                self.text_widget.tag_add("highlight", start_index, end_index)
+                start_index = end_index
+
+        highlight_letters_in_order()
 
         self.text_widget.pack()
 
-        label2 = ttk.Label(self, text="Frequency order: E T I A N M S U R W D K G O H V F L P J B C Y Z Q")
+        label2 = ttk.Label(self, text="Frequency order: E T I A N M S U R W D K G O H V F L P J B X C Y Z Q")
         label2.pack()
 
-        hide_button = ttk.Button(self, text="Hide info", command=self.switch_callback)
-        hide_button.pack()
+        hide_show_button = ttk.Button(self, text="Hide info", command=self.switch_callback)
+        hide_show_button.pack()
 
-        test_label = ttk.Label(self, text="Story to memorize all the alphabet in frequency order:")
+        test_label = ttk.Label(self, text="Write :")
         test_label.pack()
 
         entry = tk.Entry(self, width=30)
-        entry.insert(0, "Some text to begin with.")  # Use 0 to specify the position to insert text
+        entry.insert(0, "Some text to begin with.")
         entry.pack()
 
-
+        hide_button = ttk.Button(self, text="Test answer", command=self.switch_callback)
+        hide_button.pack()
