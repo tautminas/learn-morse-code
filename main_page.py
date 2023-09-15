@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import webbrowser
+from tkinter import font
 
 
 class MainPage(tk.Frame):
@@ -33,7 +34,7 @@ class MainPage(tk.Frame):
         self.selected_option = tk.StringVar()
         dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
         dropdown.pack(side="left")
-        self.selected_option.set("Frequency Method")
+        self.selected_option.set("Phrase Method")
 
         button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
         button.pack(side="left")
@@ -45,9 +46,21 @@ class MainPage(tk.Frame):
 
 class HyperlinkLabel(tk.Label):
     def __init__(self, parent, text, link_url):
-        super().__init__(parent, text=text, cursor="hand2", foreground="blue", underline=True)
+        super().__init__(parent, text=text, cursor="hand2", foreground="blue")
         self.link_url = link_url
         self.bind("<Button-1>", self.open_link)
+        self.bind("<Enter>", self.on_enter)
+        self.bind("<Leave>", self.on_leave)
+
+        self.normal_font = self.cget("font")
+        self.hover_font = font.Font(self, self.normal_font)
+        self.hover_font.configure(underline=True)
 
     def open_link(self, event):
         webbrowser.open_new(self.link_url)
+
+    def on_enter(self, event):
+        self.configure(font=self.hover_font)
+
+    def on_leave(self, event):
+        self.configure(font=self.normal_font)
