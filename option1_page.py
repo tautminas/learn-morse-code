@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import re
 
 
 class Option1Page(tk.Frame):
@@ -43,17 +44,41 @@ class Option1Page(tk.Frame):
 
         self.test_label = ttk.Label(self.row_frame, text="Write the letters of frequency method:")
 
-        self.entry = tk.Entry(self.row_frame, width=30)
-        self.entry.insert(0, "Some text to begin with.")
+        self.entry = tk.Entry(self.row_frame, width=32)
+        self.entry.insert(0, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        self.entry.config(fg="gray")
+        self.entry.bind("<FocusIn>", self.on_entry_click)
+        self.entry.bind("<FocusOut>", self.on_entry_leave)
 
-        self.test_button = ttk.Button(self.row_frame, text="Test answer", command=self.switch_callback)
+        self.test_button = ttk.Button(self.row_frame, text="Test answer", command=self.check_answer)
 
-        self.show_answer_button = ttk.Button(self.row_frame, text="Show answer", command=self.switch_callback)
+        self.show_answer_button = ttk.Button(self.row_frame, text="Show answer", command=self.set_entry_text)
 
         self.answer_label = ttk.Label(self, text="Your answer is...")
 
         self.pack_elements()
 
+    def on_entry_click(self, event):
+        if self.entry.get() == "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            self.entry.delete(0, "end")
+            self.entry.config(fg='black')
+
+    def on_entry_leave(self, event):
+        if self.entry.get() == "":
+            self.entry.insert(0, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+            self.entry.config(fg='gray')
+
+    def set_entry_text(self):
+        self.entry.delete(0, "end")
+        self.entry.insert(0, "ETIANMSURWDKGOHVFLPJBXCYZQ")
+        self.entry.config(fg='black')
+
+    def check_answer(self):
+        answer = re.sub(r'[^a-zA-Z]', '', self.entry.get()).upper()
+        if answer == "ETIANMSURWDKGOHVFLPJBXCYZQ":
+            self.answer_label.config(text="Your answer is correct! Don't forget to celebrate.", foreground="green")
+        else:
+            self.answer_label.config(text="Your answer is wrong. But I believe in you! ", foreground="red")
 
     def pack_elements(self, all=True):
         self.button.pack(anchor="w")
