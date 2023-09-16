@@ -6,7 +6,6 @@ import re
 class Option1Page(tk.Frame):
     def __init__(self, parent, switch_callback):
         super().__init__(parent)
-        self.parent = parent
         self.text_widget_visible = None
         self.pack(fill="both", expand=True)
         self.switch_callback = switch_callback
@@ -80,7 +79,7 @@ class Option1Page(tk.Frame):
         else:
             self.answer_label.config(text="Your answer is wrong. But I believe in you! ", foreground="red")
 
-    def pack_elements(self, all=True):
+    def pack_elements(self):
         self.button.pack(anchor="w")
         self.hide_show_button.pack()
         self.story_label.pack()
