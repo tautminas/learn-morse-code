@@ -16,7 +16,7 @@ class MainPage(tk.Frame):
 
         intro_label = ttk.Label(self, text="Welcome to the GUI application which will help you perfectionize your morse code skills! "
                                            "The technique of learning Morse code which is used in the app is created by American memory athlete Nelson Dellis. "
-                                           "Application has different modes of learning. Please select one according to your needs and let's have some fun.", wraplength=400, justify="center")
+                                           "Application has different modes of learning. Please select one according to your needs and let's have some fun.", wraplength=450, justify="center")
         intro_label.pack()
 
         youtube_url = "https://www.youtube.com/watch?v=D8tPkb98Fkk"
@@ -34,7 +34,7 @@ class MainPage(tk.Frame):
         self.selected_option = tk.StringVar()
         dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
         dropdown.pack(side="left")
-        self.selected_option.set("Letter to code practice")
+        self.selected_option.set("Code to letter practice")
 
         button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
         button.pack(side="left")
