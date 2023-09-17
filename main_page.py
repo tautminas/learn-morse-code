@@ -34,7 +34,7 @@ class MainPage(tk.Frame):
         self.selected_option = tk.StringVar()
         dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
         dropdown.pack(side="left")
-        self.selected_option.set("Frequency method")
+        self.selected_option.set("Letter to code practice")
 
         button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
         button.pack(side="left")

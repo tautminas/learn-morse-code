@@ -88,8 +88,6 @@ class PhrasePage(tk.Frame):
 
         self.pack_elements()
 
-
-
     def pick_random_letter(self):
         random_letter_choice = random.choice(self.table_data)[0]
         while random_letter_choice == self.random_letter:
@@ -158,6 +156,8 @@ class PhrasePage(tk.Frame):
             self.answer_label.config(text=f'Your answer is wrong. The phrase of letter {letter} actually is "{phrase}".', foreground="red")
         self.pick_random_letter()
         self.test_label.config(text=f"Write the phrase for a letter {self.random_letter}:")
+        self.entry.delete(0, tk.END)
+        self.entry.focus_set()
 
     def hide_info(self):
         current_text = self.hide_show_button.cget("text")
