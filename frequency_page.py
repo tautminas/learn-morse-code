@@ -3,7 +3,7 @@ from tkinter import ttk
 import re
 
 
-class Option1Page(tk.Frame):
+class FrequencyPage(tk.Frame):
     def __init__(self, parent, switch_callback):
         super().__init__(parent)
         self.text_widget_visible = None

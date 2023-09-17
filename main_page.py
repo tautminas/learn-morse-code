@@ -30,11 +30,11 @@ class MainPage(tk.Frame):
         mode_label = ttk.Label(row_frame, text="Select the mode of learning Morse code:")
         mode_label.pack(side="left")
 
-        options = ["Frequency Method", "Phrase Method"]
+        options = ["Frequency method", "Phrase method", "Letter to code practice", "Code to letter practice"]
         self.selected_option = tk.StringVar()
         dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
         dropdown.pack(side="left")
-        self.selected_option.set("Phrase Method")
+        self.selected_option.set("Frequency method")
 
         button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
         button.pack(side="left")

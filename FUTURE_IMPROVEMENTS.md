@@ -4,6 +4,8 @@ Possibilities:
 - Add these modes: 1) Letter to morse code; 2) Morse code to letter; 3) Sound to letter
 - Finish frequency and phrase methods
 - Add disclaimers for test labels in frequency and phrase methods so that people would know what to input. 
+- Clear answer in phrase_page after testing
+- Add paddings for better UX
 
 Refactor the code 🙂:
 - Rename files (option1, option2 -> frequency_method, phrase_method) and variables

@@ -4,7 +4,7 @@ import re
 import random
 
 
-class Option2Page(tk.Frame):
+class PhrasePage(tk.Frame):
     def __init__(self, parent, switch_callback):
         super().__init__(parent)
         self.pack(fill="both", expand=True)

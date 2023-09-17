@@ -1,7 +1,8 @@
-import tkinter as tk
 from main_page import MainPage
-from option1_page import Option1Page
-from option2_page import Option2Page
+from frequency_page import FrequencyPage
+from phrase_page import PhrasePage
+from letter_to_code_page import LetterToCodePage
+from code_to_letter_page import CodeToLetterPage
 
 
 class MorseCodeApp:
@@ -25,8 +26,11 @@ class MorseCodeApp:
         if self.current_frame:
             self.current_frame.destroy()
 
-        if option == "Frequency Method":
-            self.current_frame = Option1Page(self.root, self.show_main_page)
-        elif option == "Phrase Method":
-            self.current_frame = Option2Page(self.root, self.show_main_page)
-
+        if option == "Frequency method":
+            self.current_frame = FrequencyPage(self.root, self.show_main_page)
+        elif option == "Phrase method":
+            self.current_frame = PhrasePage(self.root, self.show_main_page)
+        elif option == "Letter to code practice":
+            self.current_frame = LetterToCodePage(self.root, self.show_main_page)
+        elif option == "Code to letter practice":
+            self.current_frame = CodeToLetterPage(self.root, self.show_main_page)
