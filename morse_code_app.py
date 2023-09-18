@@ -9,12 +9,11 @@ class MorseCodeApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Learn Morse Code")
-
         self.root.minsize(width=500, height=300)
 
-        self.current_frame = None  # Store the current frame
+        self.current_frame = None
 
-        self.show_main_page()  # Start with the main page
+        self.show_main_page()
 
     def show_main_page(self):
         if self.current_frame:

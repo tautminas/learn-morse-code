@@ -22,7 +22,10 @@ class CodeToLetterPage(tk.Frame):
         self.button = ttk.Button(self, text="Back to Main Page", command=self.switch_callback)
         self.button.pack(anchor="w")
 
-        self.info_label = ttk.Label(self, text="Practice converting Morse code to letters. If you find it difficult it is recommended to spend some more time in phrase method mode. I believe in you!", wraplength=500, justify="center")
+        info_text = "Practice converting Morse code to letters. " \
+                    "If you find it difficult it is recommended to spend some more time in phrase method mode. " \
+                    "I believe in you!"
+        self.info_label = ttk.Label(self, text=info_text, wraplength=500, justify="center")
         self.info_label.pack()
 
         self.row_frame = ttk.Frame(self)
@@ -44,4 +47,14 @@ class CodeToLetterPage(tk.Frame):
         self.random_letter = random_letter_choice
 
     def check_answer(self):
-        pass
+        letter = self.random_letter
+        code = self.codes_dict[self.random_letter]
+        real_answer = self.letters_dict[code]
+        input_answer = self.entry.get().upper()
+        if input_answer == real_answer:
+            self.answer_label.config(text=f'Your answer is right. The code {code} really means letter {letter}.', foreground="green")
+        else:
+            self.answer_label.config(text=f'Your answer is wrong. The code {code} actually means letter {letter}.', foreground="red")
+        self.pick_random_letter()
+        self.test_label.config(text=f"Write the letter whose Morse code is {self.codes_dict[self.random_letter]}:")
+        self.entry.delete(0, tk.END)

@@ -57,12 +57,12 @@ class FrequencyPage(tk.Frame):
 
         self.pack_elements()
 
-    def on_entry_click(self, event):
+    def on_entry_click(self, _):
         if self.entry.get() == "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             self.entry.delete(0, "end")
             self.entry.config(fg='black')
 
-    def on_entry_leave(self, event):
+    def on_entry_leave(self, _):
         if self.entry.get() == "":
             self.entry.insert(0, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
             self.entry.config(fg='gray')

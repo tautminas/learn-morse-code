@@ -11,33 +11,37 @@ class MainPage(tk.Frame):
         self.switch_callback = switch_callback
 
         self.logo_image = tk.PhotoImage(file='./assets/logo.png')
-        label = ttk.Label(self, image=self.logo_image)
-        label.pack()
+        self.label = ttk.Label(self, image=self.logo_image)
+        self.label.pack()
 
-        intro_label = ttk.Label(self, text="Welcome to the GUI application which will help you perfectionize your morse code skills! "
-                                           "The technique of learning Morse code which is used in the app is created by American memory athlete Nelson Dellis. "
-                                           "Application has different modes of learning. Please select one according to your needs and let's have some fun.", wraplength=450, justify="center")
-        intro_label.pack()
+        intro_text = (
+            "Welcome to the GUI application which will help you perfect your Morse code skills! "
+            "The technique of learning Morse code used in the app was created by American memory "
+            "athlete Nelson Dellis. The application has different learning modes. Please select one "
+            "according to your needs and let's have some fun."
+        )
+        self.intro_label = ttk.Label(self, text=intro_text, wraplength=450, justify="center")
+        self.intro_label.pack()
 
         youtube_url = "https://www.youtube.com/watch?v=D8tPkb98Fkk"
         youtube_label_text = "Before doing the exercises, please watch Nelson Dellis educational YouTube video!"
-        youtube_label = HyperlinkLabel(self, text=youtube_label_text, link_url=youtube_url)
-        youtube_label.pack()
+        self.youtube_label = HyperlinkLabel(self, text=youtube_label_text, link_url=youtube_url)
+        self.youtube_label.pack()
 
-        row_frame = ttk.Frame(self)
-        row_frame.pack()
+        self.row_frame = ttk.Frame(self)
+        self.row_frame.pack()
 
-        mode_label = ttk.Label(row_frame, text="Select the mode of learning Morse code:")
-        mode_label.pack(side="left")
+        self.mode_label = ttk.Label(self.row_frame, text="Select the mode of learning Morse code:")
+        self.mode_label.pack(side="left")
 
-        options = ["Frequency method", "Phrase method", "Letter to code practice", "Code to letter practice"]
+        self.options = ["Frequency method", "Phrase method", "Letter to code practice", "Code to letter practice"]
         self.selected_option = tk.StringVar()
-        dropdown = ttk.Combobox(row_frame, textvariable=self.selected_option, values=options, state="readonly")
-        dropdown.pack(side="left")
-        self.selected_option.set("Code to letter practice")
+        self.dropdown = ttk.Combobox(self.row_frame, textvariable=self.selected_option, values=self.options, state="readonly")
+        self.dropdown.pack(side="left")
+        self.selected_option.set("Frequency method")
 
-        button = ttk.Button(row_frame, text="Let's go", command=self.handle_option_selection)
-        button.pack(side="left")
+        self.button = ttk.Button(self.row_frame, text="Let's go", command=self.handle_option_selection)
+        self.button.pack(side="left")
 
     def handle_option_selection(self):
         selected_option = self.selected_option.get()
@@ -56,11 +60,11 @@ class HyperlinkLabel(tk.Label):
         self.hover_font = font.Font(self, self.normal_font)
         self.hover_font.configure(underline=True)
 
-    def open_link(self, event):
+    def open_link(self, _):
         webbrowser.open_new(self.link_url)
 
-    def on_enter(self, event):
+    def on_enter(self, _):
         self.configure(font=self.hover_font)
 
-    def on_leave(self, event):
+    def on_leave(self, _):
         self.configure(font=self.normal_font)

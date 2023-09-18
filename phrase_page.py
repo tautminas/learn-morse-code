@@ -128,12 +128,12 @@ class PhrasePage(tk.Frame):
         self.row_frame.pack()
         self.answer_label.pack()
 
-    def on_entry_click(self, event):
+    def on_entry_click(self, _):
         if self.entry.get() == "Memorable phrase":
             self.entry.delete(0, "end")
             self.entry.config(fg='black')
 
-    def on_entry_leave(self, event):
+    def on_entry_leave(self, _):
         if self.entry.get() == "":
             self.entry.insert(0, "Memorable phrase")
             self.entry.config(fg='gray')
@@ -151,9 +151,12 @@ class PhrasePage(tk.Frame):
         input_answer = re.sub(r'[^a-zA-Z]', '', self.entry.get()).upper()
         real_answer = re.sub(r'[^a-zA-Z]', '', phrase).upper()
         if input_answer == real_answer:
-            self.answer_label.config(text=f'Your answer is right. The phrase of letter {letter} really is "{phrase}".', foreground="green")
+            self.answer_label.config(text=f'Your answer is right. The phrase of letter {letter} really is "{phrase}".',
+                                     foreground="green")
         else:
-            self.answer_label.config(text=f'Your answer is wrong. The phrase of letter {letter} actually is "{phrase}".', foreground="red")
+            self.answer_label.config(text=f'Your answer is wrong. '
+                                          f'The phrase of letter {letter} actually is "{phrase}".',
+                                     foreground="red")
         self.pick_random_letter()
         self.test_label.config(text=f"Write the phrase for a letter {self.random_letter}:")
         self.entry.delete(0, tk.END)
