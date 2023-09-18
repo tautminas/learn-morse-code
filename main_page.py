@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-import webbrowser
 from tkinter import font
+import webbrowser
+import os
+import sys
 
 
 class MainPage(tk.Frame):
@@ -10,7 +12,10 @@ class MainPage(tk.Frame):
         self.pack(fill="both", expand=True)
         self.switch_callback = switch_callback
 
-        self.logo_image = tk.PhotoImage(file='./assets/logo.png')
+        base_directory = os.path.abspath(os.path.dirname(__file__))
+        relative_img_path = "assets/logo.png"
+        absolute_img_path = os.path.join(base_directory, relative_img_path)
+        self.logo_image = tk.PhotoImage(file=absolute_img_path)
         self.label = ttk.Label(self, image=self.logo_image)
         self.label.pack()
 
@@ -36,7 +41,8 @@ class MainPage(tk.Frame):
 
         self.options = ["Frequency method", "Phrase method", "Letter to code practice", "Code to letter practice"]
         self.selected_option = tk.StringVar()
-        self.dropdown = ttk.Combobox(self.row_frame, textvariable=self.selected_option, values=self.options, state="readonly")
+        self.dropdown = ttk.Combobox(self.row_frame, textvariable=self.selected_option, values=self.options,
+                                     state="readonly")
         self.dropdown.pack(side="left")
         self.selected_option.set("Frequency method")
 
