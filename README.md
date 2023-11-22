@@ -1,7 +1,7 @@
 # Learn Morse Code
 
 ## About the application
-Learn Morse Code is a GUI application designed to help you learn Morse code efficiently. Learning the Morse code is not such a daunting task if the right memory techniques are used for learning it. It was perfectly shown by Nelson Dellis (memory athlete) in his [YouTube](https://www.youtube.com/watch?v=D8tPkb98Fkk) video. The application utilizes his learning approach.
+Learn Morse Code is a GUI application designed to help you learn Morse code efficiently. It is made with Python's tkinter library for GUI. Learning the Morse code is not such a daunting task if the right memory techniques are used for learning it. It was perfectly shown by Nelson Dellis (memory athlete) in his [YouTube](https://www.youtube.com/watch?v=D8tPkb98Fkk) video. The application utilizes his learning approach.
 
 ## Running the program
 Run the application:
